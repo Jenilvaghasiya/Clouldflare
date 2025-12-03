@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
-import WordFrom from './pages/wordfrom';
+import WordFrom from './pages/WordFrom';
 import ColorFrom from './pages/ColorFrom';
 import Login from './pages/Login';
 import Register from './pages/Register';
