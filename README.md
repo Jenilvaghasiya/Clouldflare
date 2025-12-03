@@ -1,4 +1,4 @@
-# Wordzy_Admin
+# KidsBunny
 
 ⭐ KidsBunny Admin Panel
 
