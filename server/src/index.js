@@ -155,6 +155,18 @@ export default {
       });
     }
 
+    // Test endpoint
+    if (url.pathname === '/test') {
+      return new Response(JSON.stringify({ 
+        status: 'ok',
+        hasApiKey: !!env.FIREBASE_API_KEY,
+        hasProjectId: !!env.FIREBASE_PROJECT_ID,
+        hasKV: !!env.TEMP_PASSWORDS
+      }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     // Forgot password endpoint
     if (url.pathname === '/api/forgot-password' && request.method === 'POST') {
       try {
