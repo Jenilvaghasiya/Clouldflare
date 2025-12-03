@@ -1,0 +1,16 @@
+name = "wordzy-server"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+FRONTEND_URL = "https://clouldflare-kidsbunny.pages.dev/"
+
+# KV namespace for storing temporary passwords
+[[kv_namespaces]]
+binding = "TEMP_PASSWORDS"
+id = "dacd508b30d242f487ba46f8c0524c98"
+
+# Secrets are set via: wrangler secret put FIREBASE_API_KEY
+# FIREBASE_API_KEY
+# FIREBASE_PROJECT_ID
