@@ -137,6 +137,8 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     
+    console.log('Request:', request.method, url.pathname);
+    
     // CORS headers
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',
@@ -258,6 +260,10 @@ export default {
       });
     }
 
-    return new Response('Not Found', { status: 404, headers: corsHeaders });
+    console.log('No route matched for:', url.pathname);
+    return new Response(JSON.stringify({ error: 'Not Found', path: url.pathname }), { 
+      status: 404, 
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
   },
 };

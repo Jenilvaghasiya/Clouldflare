@@ -129,21 +129,16 @@ export default function Login() {
     if (Object.keys(next).length) return;
     setSubmitting(true);
     try {
-      const response = await fetch(`${API_URL}/api/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      
-      const data = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send reset email');
-      }
-      
-      setSuccess('A temporary password has been sent to your email. Please check your inbox and use it to log in.');
+      const { sendPasswordResetEmail } = await import('firebase/auth');
+      await sendPasswordResetEmail(auth, email.trim());
+      setSuccess('Password reset email sent! Please check your inbox and follow the instructions.');
+      setEmail('');
     } catch (err) {
-      setError(err.message || 'Failed to send reset email');
+      if (err.code === 'auth/user-not-found') {
+        setError('No account found with this email address');
+      } else {
+        setError(err.message || 'Failed to send reset email');
+      }
     } finally {
       setSubmitting(false);
     }
