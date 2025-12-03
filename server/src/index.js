@@ -170,7 +170,9 @@ export default {
     // Forgot password endpoint
     if (url.pathname === '/api/forgot-password' && request.method === 'POST') {
       try {
+        console.log('Forgot password request received');
         const { email } = await request.json();
+        console.log('Email:', email);
 
         if (!email) {
           return new Response(JSON.stringify({ error: 'Email is required' }), {
@@ -218,7 +220,8 @@ export default {
 
       } catch (error) {
         console.error('Forgot password error:', error);
-        return new Response(JSON.stringify({ error: 'Failed to send password reset email' }), {
+        console.error('Error details:', error.message, error.stack);
+        return new Response(JSON.stringify({ error: 'Failed to send password reset email', details: error.message }), {
           status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
