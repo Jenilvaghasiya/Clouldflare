@@ -1,0 +1,41 @@
+.ww-toast{position:fixed;right:16px;top:16px;z-index:1000;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;color:#0b1;box-shadow:0 6px 20px rgba(0,0,0,.2);cursor:pointer;max-width:calc(100vw - 32px);}
+.ww-toast-success{background:#87f087;border:1px solid #b7e7b7;color:#146c2e;border-left:4px solid #2ea043}
+.ww-toast-error{background:#f4b5b5;border:1px solid #f2b8b5;color:#b42318;border-left:4px solid #e11d48}
+.ww-toast-info{background:#eef6ff;border:1px solid #b6daff;color:#0842a0;border-left:4px solid #3b82f6}
+.ww-toast-msg{font-size:14px;word-break:break-word;}
+.ww-toast-icon{display:inline-flex;align-items:center;justify-content:center;opacity:.9;margin-right:4px;flex-shrink:0;}
+
+/* entry animation */
+.ww-toast-enter{animation:wwToastSlideIn .25s ease-out}
+@keyframes wwToastSlideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* exit animation */
+.ww-toast-exit{animation:wwToastSlideOut .25s ease-in}
+@keyframes wwToastSlideOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ww-toast {
+    right: 12px;
+    top: 12px;
+    padding: 8px 12px;
+    max-width: calc(100vw - 24px);
+  }
+
+  .ww-toast-msg {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ww-toast {
+    right: 8px;
+    top: 8px;
+    padding: 8px 10px;
+    max-width: calc(100vw - 16px);
+  }
+
+  .ww-toast-msg {
+    font-size: 12px;
+  }
+}
